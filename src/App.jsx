@@ -106,8 +106,11 @@ function App() {
     const batchUpdate = () => {
         showingScore.forEach((item, idx) => {
             const from = item.value;
-            if (from < score[idx])
+            if (from < score[idx]) {
+                ACSound.play();
+                playUp(idx);
                 item.increment(score[idx] - from);
+            }
             else
                 item.decrement(from - score[idx]);    
         });
@@ -215,8 +218,8 @@ function App() {
                                             y: getEl(2).y
                                         }}
                                     />}
-                                    <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-teal-500 border-teal-300 rounded-lg shadow flex flex-col justify-center">
-                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-teal-500'></div>
+                                    <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-green-500 border-green-300 rounded-lg shadow flex flex-col justify-center">
+                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-green-500'></div>
                                         <div className='w-10 flex flex-col items-center'>
                                             <p ref={refs[2]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[2].value}</p>
                                         </div>
@@ -316,7 +319,7 @@ function App() {
                         <div className='flex items-center gap-4'>
                             <button onClick={() => { showingScore[2].increment(point); playUp(2); }} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
                             <button onClick={() => { showingScore[2].decrement(point); playDown(2); }} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
-                            <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='0'>
+                            <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='2'>
                                 <input type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='2' onChange={valueInput} />
                                 <button type="submit" className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">OK</button>
                             </form>
@@ -330,8 +333,8 @@ function App() {
                         <div className='flex items-center gap-4'>
                             <button onClick={() => { showingScore[3].increment(point); playUp(3); }} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
                             <button onClick={() => { showingScore[3].decrement(point); playDown(3); }} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
-                            <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='0'>
-                                <input value={"Team 4"} type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='3' onChange={valueInput} />
+                            <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='3'>
+                                <input type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='3' onChange={valueInput} />
                                 <button type="submit" className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">OK</button>
                             </form>
                         </div>
@@ -344,7 +347,7 @@ function App() {
                         <div className='flex items-center gap-4'>
                             <button onClick={() => { showingScore[4].increment(point); playUp(4); } } type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
                             <button onClick={() => { showingScore[4].decrement(point); playDown(4); } } type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
-                            <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='0'>
+                            <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='4'>
                                 <input type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='4' onChange={valueInput} />
                                 <button type="submit" className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">OK</button>
                             </form>
