@@ -145,7 +145,6 @@ function App() {
                                     {teamName[0]}
                                 </p>
                                 {loaded && <Confetti
-                                    run={loaded}
                                     recycle={confettis[0][0]}
                                     numberOfPieces={130}
                                     friction={0.97}
@@ -169,6 +168,18 @@ function App() {
                                     <p className='text-gray-600'>
                                         {teamName[1]}
                                     </p>
+                                    {loaded && <Confetti
+                                        recycle={confettis[1][0]}
+                                        numberOfPieces={130}
+                                        friction={0.97}
+                                        gravity={0.15}
+                                        confettiSource={{
+                                            w: getEl(1).w,
+                                            h: getEl(1).h,
+                                            x: getEl(1).x,
+                                            y: getEl(1).y
+                                        }}
+                                    />}
                                     <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-blue-500 border-blue-300 rounded-lg shadow flex flex-col justify-center">
                                         <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-blue-500'></div>
                                         <div className='w-10 flex flex-col items-center'>
@@ -182,6 +193,18 @@ function App() {
                                     <p className='text-gray-600'>
                                         {teamName[2]}
                                     </p>
+                                    {loaded && <Confetti
+                                        recycle={confettis[2][0]}
+                                        numberOfPieces={130}
+                                        friction={0.97}
+                                        gravity={0.15}
+                                        confettiSource={{
+                                            w: getEl(2).w,
+                                            h: getEl(2).h,
+                                            x: getEl(2).x,
+                                            y: getEl(2).y
+                                        }}
+                                    />}
                                     <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-green-500 border-green-300 rounded-lg shadow flex flex-col justify-center">
                                         <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-green-500'></div>
                                         <div className='w-10 flex flex-col items-center'>
@@ -196,6 +219,18 @@ function App() {
                                 <p className='text-gray-600'>
                                     {teamName[3]}
                                 </p>
+                                {loaded && <Confetti
+                                    recycle={confettis[3][0]}
+                                    numberOfPieces={130}
+                                    friction={0.97}
+                                    gravity={0.15}
+                                    confettiSource={{
+                                        w: getEl(3).w,
+                                        h: getEl(3).h,
+                                        x: getEl(3).x,
+                                        y: getEl(3).y
+                                    }}
+                                />}
                                 <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-yellow-500 border-yellow-300 rounded-lg shadow flex flex-col justify-center">
                                     <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-yellow-500'></div>
                                     <div className='w-10 flex flex-col items-center'>
@@ -208,6 +243,18 @@ function App() {
                                     <p className='text-gray-600'>
                                         {teamName[4]}
                                     </p>
+                                    {loaded && <Confetti
+                                        recycle={confettis[4][0]}
+                                        numberOfPieces={130}
+                                        friction={0.97}
+                                        gravity={0.15}
+                                        confettiSource={{
+                                            w: getEl(4).w,
+                                            h: getEl(4).h,
+                                            x: getEl(4).x,
+                                            y: getEl(4).y
+                                        }}
+                                    />}
                                     <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-purple-500 border-purple-300 rounded-lg shadow flex flex-col justify-center">
                                         <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-purple-500'></div>
                                         <div className='w-10 flex flex-col items-center'>
@@ -243,8 +290,8 @@ function App() {
                             <input type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="1" onChange={nameChange} />
                         </div>
                         <div className='flex items-center gap-4'>
-                            <button onClick={() => showingScore[1].increment(10)} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
-                            <button onClick={() => showingScore[1].decrement(10)} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
+                            <button onClick={() => { showingScore[1].increment(10); playUp(1); } } type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
+                            <button onClick={() => { showingScore[1].decrement(10); playDown(1); }} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
                             <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='1'>
                                 <input type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='1' onChange={valueInput} />
                                 <button type="submit" className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">OK</button>
@@ -257,8 +304,8 @@ function App() {
                             <input type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="2" onChange={nameChange} />
                         </div>
                         <div className='flex items-center gap-4'>
-                            <button onClick={() => showingScore[2].increment(10)} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
-                            <button onClick={() => showingScore[2].decrement(10)} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
+                            <button onClick={() => { showingScore[2].increment(10); playUp(2); }} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
+                            <button onClick={() => { showingScore[2].decrement(10); playDown(2); }} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
                             <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='0'>
                                 <input type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='2' onChange={valueInput} />
                                 <button type="submit" className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">OK</button>
@@ -271,8 +318,8 @@ function App() {
                             <input type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="3" onChange={nameChange} />
                         </div>
                         <div className='flex items-center gap-4'>
-                            <button onClick={() => showingScore[3].increment(10)} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
-                            <button onClick={() => showingScore[3].decrement(10)} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
+                            <button onClick={() => { showingScore[3].increment(10); playUp(3); }} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
+                            <button onClick={() => { showingScore[3].decrement(10); playDown(3); }} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
                             <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='0'>
                                 <input type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='3' onChange={valueInput} />
                                 <button type="submit" className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">OK</button>
@@ -285,8 +332,8 @@ function App() {
                             <input type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="4" onChange={nameChange} />
                         </div>
                         <div className='flex items-center gap-4'>
-                            <button onClick={() => showingScore[4].increment(10)} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
-                            <button onClick={() => showingScore[4].decrement(10)} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
+                            <button onClick={() => { showingScore[4].increment(10); playUp(4); } } type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
+                            <button onClick={() => { showingScore[4].decrement(10); playDown(4); } } type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
                             <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='0'>
                                 <input type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='4' onChange={valueInput} />
                                 <button type="submit" className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">OK</button>
