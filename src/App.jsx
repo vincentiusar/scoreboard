@@ -74,6 +74,8 @@ function App() {
     const teamBox = [useRef(), useRef(), useRef(), useRef(), useRef()];
     const confettis = [useState(false), useState(false), useState(false), useState(false), useState(false)];
 
+    const ACSound = new Audio('correct.mp3');
+
     const nameChange = (e) => {
         const t = [...teamName];
         t[Number(e.target.name)] = e.target.value;
@@ -90,10 +92,14 @@ function App() {
         e.preventDefault();
         e.target.reset();
         const from = showingScore[e.target.id].value;
-        if (from < score[e.target.id])
+        if (from < score[e.target.id]) {
+            playUp(e.target.id);
             showingScore[e.target.id].increment(score[e.target.id] - from);
-        else
+        }
+        else {
+            playDown(e.target.id);
             showingScore[e.target.id].decrement(from - score[e.target.id]);
+        }
     }
 
     const batchUpdate = () => {
@@ -108,13 +114,14 @@ function App() {
 
     const playUp = (e) => {
         if (!refs[e].current.classList.contains('increment')) {
+            ACSound.play();
             refs[e].current.classList.add('increment');
             setTimeout(() => refs[e].current.classList.remove('increment'), 1500);
             confettis[e][1](true);
             setTimeout(() => confettis[e][1](false), 800);
         }
     }
-    
+
     const playDown = (e) => {
         if (!refs[e].current.classList.contains('decrement')) {
             refs[e].current.classList.add('decrement');
@@ -159,7 +166,7 @@ function App() {
                                 <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-red-500 border-red-300 rounded-lg shadow flex flex-col justify-center">
                                     <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-red-500'></div>
                                     <div className='w-10 flex flex-col items-center'>
-                                        <p ref={refs[0]} className={`mb-2 text-2xl font-bold tracking text-gray-600 pt-5 counter-box`}>{showingScore[0].value}</p>
+                                        <p ref={refs[0]} className={`mb-2 text-6xl font-bold tracking text-gray-600 pt-5 counter-box`}>{showingScore[0].value}</p>
                                     </div>
                                 </div>
                             </div>
@@ -183,7 +190,7 @@ function App() {
                                     <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-blue-500 border-blue-300 rounded-lg shadow flex flex-col justify-center">
                                         <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-blue-500'></div>
                                         <div className='w-10 flex flex-col items-center'>
-                                            <p ref={refs[1]} className="mb-2 text-2xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[1].value}</p>
+                                            <p ref={refs[1]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[1].value}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +215,7 @@ function App() {
                                     <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-green-500 border-green-300 rounded-lg shadow flex flex-col justify-center">
                                         <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-green-500'></div>
                                         <div className='w-10 flex flex-col items-center'>
-                                            <p ref={refs[2]} className="mb-2 text-2xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[2].value}</p>
+                                            <p ref={refs[2]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[2].value}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -234,7 +241,7 @@ function App() {
                                 <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-yellow-500 border-yellow-300 rounded-lg shadow flex flex-col justify-center">
                                     <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-yellow-500'></div>
                                     <div className='w-10 flex flex-col items-center'>
-                                        <p ref={refs[3]} className="mb-2 text-2xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[3].value}</p>
+                                        <p ref={refs[3]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[3].value}</p>
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +265,7 @@ function App() {
                                     <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-purple-500 border-purple-300 rounded-lg shadow flex flex-col justify-center">
                                         <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-purple-500'></div>
                                         <div className='w-10 flex flex-col items-center'>
-                                            <p ref={refs[4]} className="mb-2 text-2xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[4].value}</p>
+                                            <p ref={refs[4]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[4].value}</p>
                                         </div>
                                     </div>
                                 </div>
