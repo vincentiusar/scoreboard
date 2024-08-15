@@ -146,10 +146,10 @@ function App() {
                     <div className='p-2 flex flex-col place-items-center justify-end'>
                         <button type='button' className="w-full focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish</button>
                         <label>Score Round</label>
-                        <input onChange={(e) => setPoint(Number(e.target.value))} className='w-20 h-10 text-xl text-center text-black' type='number' />
+                        <input onChange={(e) => setPoint(Number(e.target.value))} value={10} className='w-20 h-10 text-xl text-center text-black' type='number' />
                     </div>
-                    <div className='aspect-video w-10/12 border-2 border-yellow-400 p-7 bg-white flex flex-col justify-evenly'>
-                        <div className='flex justify-around border border-red-500'>
+                    <div className='aspect-video w-10/12 p-7 bg-white flex flex-col justify-evenly'>
+                        <div className='flex justify-around'>
                             <div className='font-semibold flex flex-col items-center' ref={teamBox[0]}>
                                 <p className='text-gray-600'>
                                     {teamName[0]}
@@ -215,8 +215,8 @@ function App() {
                                             y: getEl(2).y
                                         }}
                                     />}
-                                    <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-green-500 border-green-300 rounded-lg shadow flex flex-col justify-center">
-                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-green-500'></div>
+                                    <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-teal-500 border-teal-300 rounded-lg shadow flex flex-col justify-center">
+                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-teal-500'></div>
                                         <div className='w-10 flex flex-col items-center'>
                                             <p ref={refs[2]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[2].value}</p>
                                         </div>
@@ -224,7 +224,7 @@ function App() {
                                 </div>
                             </div>
                         </div>
-                        <div className='flex justify-evenly border border-red-500'>
+                        <div className='flex justify-evenly'>
                             <div className='font-semibold flex flex-col items-center' ref={teamBox[3]}>
                                 <p className='text-gray-600'>
                                     {teamName[3]}
@@ -283,7 +283,7 @@ function App() {
                     <div className='flex flex-col items-center gap-2 border-2 border-orange-500 p-2'>
                         <div className='flex items-center gap-2 w-full'>
                             <p className='w-36'>Team Name</p>
-                            <input type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="0" onChange={nameChange} />
+                            <input value={"Team 1"} type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="0" onChange={nameChange} />
                         </div>
                         <div className='flex items-center gap-4'>
                             <button onClick={() => { showingScore[0].increment(point); playUp(0); }} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
@@ -297,7 +297,7 @@ function App() {
                     <div className='flex flex-col items-center gap-2 border-2 border-orange-500 p-2'>
                         <div className='flex items-center gap-2 w-full'>
                             <p className='w-36'>Team Name</p>
-                            <input type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="1" onChange={nameChange} />
+                            <input value={"Team 2"} type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="1" onChange={nameChange} />
                         </div>
                         <div className='flex items-center gap-4'>
                             <button onClick={() => { showingScore[1].increment(point); playUp(1); } } type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
@@ -311,7 +311,7 @@ function App() {
                     <div className='flex flex-col items-center gap-2 border-2 border-orange-500 p-2'>
                         <div className='flex items-center gap-2 w-full'>
                             <p className='w-36'>Team Name</p>
-                            <input type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="2" onChange={nameChange} />
+                            <input value={"Team 3"} type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="2" onChange={nameChange} />
                         </div>
                         <div className='flex items-center gap-4'>
                             <button onClick={() => { showingScore[2].increment(point); playUp(2); }} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
@@ -325,13 +325,13 @@ function App() {
                     <div className='flex flex-col items-center gap-2 border-2 border-orange-500 p-2'>
                         <div className='flex items-center gap-2 w-full'>
                             <p className='w-36'>Team Name</p>
-                            <input type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="3" onChange={nameChange} />
+                            <input value={"Team 4"} type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="3" onChange={nameChange} />
                         </div>
                         <div className='flex items-center gap-4'>
                             <button onClick={() => { showingScore[3].increment(point); playUp(3); }} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
                             <button onClick={() => { showingScore[3].decrement(point); playDown(3); }} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3.5 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">-</button>
                             <form onSubmit={manualInput} className='h-full w-full flex gap-2' id='0'>
-                                <input type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='3' onChange={valueInput} />
+                                <input value={"Team 4"} type='number' className='w-16 h-full p-1.5 rounded-lg text-black text-center' name='3' onChange={valueInput} />
                                 <button type="submit" className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">OK</button>
                             </form>
                         </div>
@@ -339,7 +339,7 @@ function App() {
                     <div className='flex flex-col items-center gap-2 border-2 border-orange-500 p-2'>
                         <div className='flex items-center gap-2 w-full'>
                             <p className='w-36'>Team Name</p>
-                            <input type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="4" onChange={nameChange} />
+                            <input value={"Team 5"} type='text' className='w-full h-full p-1.5 rounded-lg text-black text-center' name="4" onChange={nameChange} />
                         </div>
                         <div className='flex items-center gap-4'>
                             <button onClick={() => { showingScore[4].increment(point); playUp(4); } } type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</button>
