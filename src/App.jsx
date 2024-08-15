@@ -69,6 +69,7 @@ function App() {
     const [point, setPoint] = useState(10);
     const [score, setScore] = useState([0, 0, 0, 0, 0]);
     const [teamName, setTeamName] = useState(["Team 1", "Team 2", "Team 3", "Team 4", "Team 5"]);
+    const [allConfet, setAllConfet] = useState(false);
     // const [showingScore, setShowingScore] = useState([0, 0, 0, 0, 0]);
     const showingScore = [useCounter(0), useCounter(0), useCounter(0), useCounter(0), useCounter(0)];
     const refs = [useRef(), useRef(), useRef(), useRef(), useRef()];
@@ -107,22 +108,26 @@ function App() {
         showingScore.forEach((item, idx) => {
             const from = item.value;
             if (from < score[idx]) {
-                ACSound.play();
-                playUp(idx);
+                playUp(idx, false);
                 item.increment(score[idx] - from);
             }
             else
-                item.decrement(from - score[idx]);    
+            item.decrement(from - score[idx]);    
         });
+        ACSound.play();
+        setAllConfet(true);
+        setTimeout(() => setAllConfet(false), 1000);
     }
 
-    const playUp = (e) => {
+    const playUp = (e, confet=true) => {
         if (!refs[e].current.classList.contains('increment')) {
             ACSound.play();
             refs[e].current.classList.add('increment');
             setTimeout(() => refs[e].current.classList.remove('increment'), 1500);
-            confettis[e][1](true);
-            setTimeout(() => confettis[e][1](false), 800);
+            if (confet) {
+                confettis[e][1](true);
+                setTimeout(() => confettis[e][1](false), 800);
+            }
         }
     }
 
@@ -144,6 +149,12 @@ function App() {
 
     return (
         <div className='h-screen w-screen mx-auto flex flex-col items-center justify-center'>
+            <Confetti 
+                recycle={allConfet}
+                numberOfPieces={130}
+                friction={0.97}
+                gravity={0.15}
+            />
             <div className='flex flex-col items-center h-full w-full'>
                 <div className='w-full flex justify-between h-5/6'>
                     <div className='p-2 flex flex-col place-items-center justify-end'>
