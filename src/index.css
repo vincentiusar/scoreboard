@@ -22,13 +22,25 @@ input::-webkit-inner-spin-button {
 }
 
 /* Define the color change animation */
-@keyframes colorChange {
-    0% { background-color: black; }
-    50% { background-color: red; }
-    100% { background-color: black; }
+@keyframes down {
+    0% { color: rgba(60, 60, 60, 0.87); }
+    25% { color: #FF0000; }
+    65% { color: #FF0000; }
+    100% { color: rgba(60, 60, 60, 0.87); }
+}
+
+@keyframes up {
+    0% { color: rgba(60, 60, 60, 0.87); }
+    25% { color: #00DF00; }
+    65% { color: #00DF00; }
+    100% { color: rgba(60, 60, 60, 0.87); }
 }
 
 /* Apply the animation when the 'animate' class is added */
-.animate {
-    animation: colorChange 2s ease-in-out;
+.decrement {
+    animation: down 1.5s ease-in-out;
+}
+
+.increment {
+    animation: up 1.5s ease-in-out;
 }
