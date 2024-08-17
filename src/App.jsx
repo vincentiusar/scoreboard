@@ -68,7 +68,7 @@ function App() {
     const [loaded, setLoaded] = useState(false);
     const [point, setPoint] = useState(10);
     const [score, setScore] = useState([0, 0, 0, 0, 0]);
-    const [teamName, setTeamName] = useState(["Team 1", "Team 2", "Team 3", "Team 4", "Team 5"]);
+    const [teamName, setTeamName] = useState(["Kelompok 1", "Kelompok 2", "Kelompok 3", "Kelompok 4", "Kelompok 5"]);
     const [allConfet, setAllConfet] = useState(false);
     // const [showingScore, setShowingScore] = useState([0, 0, 0, 0, 0]);
     const showingScore = [useCounter(0), useCounter(0), useCounter(0), useCounter(0), useCounter(0)];
@@ -98,7 +98,7 @@ function App() {
             playUp(e.target.id);
             showingScore[e.target.id].increment(score[e.target.id] - from);
         }
-        else {
+        else if (from > score[e.target.id]) {
             playDown(e.target.id);
             showingScore[e.target.id].decrement(from - score[e.target.id]);
         }
@@ -111,8 +111,10 @@ function App() {
                 playUp(idx, false);
                 item.increment(score[idx] - from);
             }
-            else
-            item.decrement(from - score[idx]);    
+            else if (from > score[idx]) {
+                playDown(idx, false);
+                item.decrement(from - score[idx]);    
+            }
         });
         ACSound.play();
         setAllConfet(true);
@@ -151,23 +153,23 @@ function App() {
         <div className='h-screen w-screen mx-auto flex flex-col items-center justify-center'>
             <Confetti 
                 recycle={allConfet}
-                numberOfPieces={130}
+                numberOfPieces={500}
                 friction={0.97}
                 gravity={0.15}
             />
             <div className='flex flex-col items-center h-full w-full'>
-                <div className='w-full flex justify-between h-5/6'>
+                <div className='aspect-video w-10/12 h-5/6 absolute bg-white' />
+                {/* <video src='bumper.mp4' className='aspect-video h-5/6 absolute opacity-50' loop autoPlay muted /> */}
+                <img src='background.jpg' className='aspect-video h-5/6 absolute' />
+                <div className='w-full flex justify-between h-5/6 screen-me'>
                     <div className='p-2 flex flex-col place-items-center justify-end'>
                         <button type='button' className="w-full focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish</button>
                         <label>Score Round</label>
                         <input onChange={(e) => setPoint(Number(e.target.value))} value={point} className='w-20 h-10 text-xl text-center text-black' type='number' />
                     </div>
-                    <div className='aspect-video w-10/12 p-7 bg-white flex flex-col justify-evenly'>
-                        <div className='flex justify-around'>
+                    <div className='aspect-video w-10/12 p-7 pt-16 flex flex-col justify-center mt-3 gap-4'>
+                        <div className='flex justify-center gap-16'>
                             <div className='font-semibold flex flex-col items-center' ref={teamBox[0]}>
-                                <p className='text-gray-600'>
-                                    {teamName[0]}
-                                </p>
                                 {loaded && <Confetti
                                     recycle={confettis[0][0]}
                                     numberOfPieces={130}
@@ -180,18 +182,19 @@ function App() {
                                         y: getEl(0).y
                                     }}
                                 />}
-                                <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-red-500 border-red-300 rounded-lg shadow flex flex-col justify-center">
-                                    <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-red-500'></div>
-                                    <div className='w-10 flex flex-col items-center'>
-                                        <p ref={refs[0]} className={`mb-2 text-6xl font-bold tracking text-gray-600 pt-5 counter-box`}>{showingScore[0].value}</p>
+                                <div className="relative px-24 pt-12 pb-6 mt-8 max-w-sm border-custom border=white shadow flex flex-col justify-center">
+                                    <div className='h-10 w-full left-0 top-0 rounded-t absolute'>
+                                        <p className='text-white text-3xl z-10 t-stroke font-bold text-center'>
+                                            {teamName[0]}
+                                        </p>
+                                    </div>
+                                    <div className='w-10 flex flex-col items-center mx-4'>
+                                        <p ref={refs[0]} className={`text-white text-9xl font-bold tracking counter-box`}>{showingScore[0].value}</p>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <div className='font-semibold flex flex-col items-center' ref={teamBox[1]}>
-                                    <p className='text-gray-600'>
-                                        {teamName[1]}
-                                    </p>
                                     {loaded && <Confetti
                                         recycle={confettis[1][0]}
                                         numberOfPieces={130}
@@ -204,19 +207,20 @@ function App() {
                                             y: getEl(1).y
                                         }}
                                     />}
-                                    <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-blue-500 border-blue-300 rounded-lg shadow flex flex-col justify-center">
-                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-blue-500'></div>
-                                        <div className='w-10 flex flex-col items-center'>
-                                            <p ref={refs[1]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[1].value}</p>
+                                    <div className="relative px-24 pt-12 pb-6 mt-8 max-w-sm border-custom border=white shadow flex flex-col justify-center">
+                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute'>
+                                            <p className='text-white text-3xl z-10 t-stroke font-bold text-center'>
+                                                {teamName[1]}
+                                            </p>
+                                        </div>
+                                        <div className='w-10 flex flex-col items-center mx-4'>
+                                            <p ref={refs[1]} className={`text-white text-9xl font-bold tracking counter-box`}>{showingScore[1].value}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <div className='font-semibold flex flex-col items-center' ref={teamBox[2]}>
-                                    <p className='text-gray-600'>
-                                        {teamName[2]}
-                                    </p>
                                     {loaded && <Confetti
                                         recycle={confettis[2][0]}
                                         numberOfPieces={130}
@@ -229,20 +233,21 @@ function App() {
                                             y: getEl(2).y
                                         }}
                                     />}
-                                    <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-green-500 border-green-300 rounded-lg shadow flex flex-col justify-center">
-                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-green-500'></div>
-                                        <div className='w-10 flex flex-col items-center'>
-                                            <p ref={refs[2]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[2].value}</p>
+                                    <div className="relative px-24 pt-12 pb-6 mt-8 max-w-sm border-custom border=white shadow flex flex-col justify-center">
+                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute'>
+                                            <p className='text-white text-3xl z-10 t-stroke font-bold text-center'>
+                                                {teamName[2]}
+                                            </p>
+                                        </div>
+                                        <div className='w-10 flex flex-col items-center mx-4'>
+                                            <p ref={refs[2]} className={`text-white text-9xl font-bold tracking counter-box`}>{showingScore[2].value}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className='flex justify-evenly'>
+                        <div className='flex justify-center gap-24'>
                             <div className='font-semibold flex flex-col items-center' ref={teamBox[3]}>
-                                <p className='text-gray-600'>
-                                    {teamName[3]}
-                                </p>
                                 {loaded && <Confetti
                                     recycle={confettis[3][0]}
                                     numberOfPieces={130}
@@ -255,18 +260,19 @@ function App() {
                                         y: getEl(3).y
                                     }}
                                 />}
-                                <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-yellow-500 border-yellow-300 rounded-lg shadow flex flex-col justify-center">
-                                    <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-yellow-500'></div>
-                                    <div className='w-10 flex flex-col items-center'>
-                                        <p ref={refs[3]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[3].value}</p>
+                                <div className="relative px-24 pt-12 pb-6 mt-8 max-w-sm border-custom border=white shadow flex flex-col justify-center">
+                                    <div className='h-10 w-full left-0 top-0 rounded-t absolute'>
+                                        <p className='text-white text-3xl z-10 t-stroke font-bold text-center'>
+                                            {teamName[3]}
+                                        </p>
+                                    </div>
+                                    <div className='w-10 flex flex-col items-center mx-4'>
+                                        <p ref={refs[3]} className={`text-white text-9xl font-bold tracking counter-box`}>{showingScore[3].value}</p>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <div className='font-semibold flex flex-col items-center' ref={teamBox[4]}>
-                                    <p className='text-gray-600'>
-                                        {teamName[4]}
-                                    </p>
                                     {loaded && <Confetti
                                         recycle={confettis[4][0]}
                                         numberOfPieces={130}
@@ -279,10 +285,14 @@ function App() {
                                             y: getEl(4).y
                                         }}
                                     />}
-                                    <div className="relative px-24 py-12 max-w-sm bg-white border-b-4 border-t border-l border-r border-b-purple-500 border-purple-300 rounded-lg shadow flex flex-col justify-center">
-                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute bg-purple-500'></div>
-                                        <div className='w-10 flex flex-col items-center'>
-                                            <p ref={refs[4]} className="mb-2 text-6xl font-bold tracking-tight text-gray-600 pt-5">{showingScore[4].value}</p>
+                                    <div className="relative px-24 pt-12 pb-6 mt-8 max-w-sm border-custom border=white shadow flex flex-col justify-center">
+                                        <div className='h-10 w-full left-0 top-0 rounded-t absolute'>
+                                            <p className='text-white text-3xl z-10 t-stroke font-bold text-center'>
+                                                {teamName[4]}
+                                            </p>
+                                        </div>
+                                        <div className='w-10 flex flex-col items-center mx-4'>
+                                            <p ref={refs[4]} className={`text-white text-9xl font-bold tracking counter-box`}>{showingScore[4].value}</p>
                                         </div>
                                     </div>
                                 </div>

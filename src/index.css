@@ -5,15 +5,11 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-family: Exo;
 
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 input::-webkit-inner-spin-button {
@@ -23,17 +19,41 @@ input::-webkit-inner-spin-button {
 
 /* Define the color change animation */
 @keyframes down {
-    0% { color: rgba(60, 60, 60, 0.87); }
-    25% { color: #FF0000; }
-    65% { color: #FF0000; }
-    100% { color: rgba(60, 60, 60, 0.87); }
+    0% { 
+      color: white; 
+      -webkit-text-stroke-color: white;
+    }
+    25% { 
+      color: #990000;
+      -webkit-text-stroke-color: #990000;
+    }
+    65% { 
+      color: #990000; 
+      -webkit-text-stroke-color: #990000;
+    }
+    100% { 
+      color: white; 
+      -webkit-text-stroke-color: white;
+    }
 }
 
 @keyframes up {
-    0% { color: rgba(60, 60, 60, 0.87); }
-    25% { color: #00DF00; }
-    65% { color: #00DF00; }
-    100% { color: rgba(60, 60, 60, 0.87); }
+    0% { 
+      color: white;
+      -webkit-text-stroke-color: white;
+    }
+    25% { 
+      color: #00DF00; 
+      -webkit-text-stroke-color: #00DF00;
+    }
+    65% { 
+      color: #00DF00; 
+      -webkit-text-stroke-color: #00DF00;
+    }
+    100% { 
+      color: white;
+      -webkit-text-stroke-color: white;
+    }
 }
 
 /* Apply the animation when the 'animate' class is added */
@@ -43,4 +63,13 @@ input::-webkit-inner-spin-button {
 
 .increment {
     animation: up 1.5s ease-in-out;
+}
+
+.border-custom {
+  border-width: 10px;
+}
+
+.counter-box {
+  -webkit-text-stroke-width: 5px;
+  -webkit-text-stroke-color: white;
 }
