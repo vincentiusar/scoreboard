@@ -56,6 +56,33 @@ input::-webkit-inner-spin-button {
     }
 }
 
+@keyframes rank1 {
+  0% {
+    @apply h-0
+  }
+  100% {
+    @apply h-96
+  }
+}
+
+@keyframes rank2 {
+  0% {
+    @apply h-0
+  }
+  100% {
+    @apply h-56
+  }
+}
+
+@keyframes rank3 {
+  0% {
+    @apply h-0
+  }
+  100% {
+    @apply h-44
+  }
+}
+
 /* Apply the animation when the 'animate' class is added */
 .decrement {
     animation: down 1.5s ease-in-out;
@@ -72,4 +99,16 @@ input::-webkit-inner-spin-button {
 .counter-box {
   -webkit-text-stroke-width: 5px;
   -webkit-text-stroke-color: white;
+}
+
+.animate-rank1 {
+  animation: rank1 1s ease-in-out forwards;
+}
+
+.animate-rank2 {
+  animation: rank2 1s ease-in-out forwards;
+}
+
+.animate-rank3 {
+  animation: rank3 1s ease-in-out forwards;
 }
