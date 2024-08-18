@@ -179,9 +179,9 @@ function App() {
                 <div className='h-screen w-screen mx-auto flex flex-col items-center justify-center'>
                     <Confetti 
                         recycle={allConfet}
-                        numberOfPieces={500}
-                        friction={0.97}
-                        gravity={0.15}
+                        numberOfPieces={700}
+                        friction={1}
+                        gravity={0.3}
                     />
                     <div className='flex flex-col items-center h-full w-full'>
                         <div className='aspect-video w-10/12 h-5/6 absolute bg-white' />
@@ -198,9 +198,9 @@ function App() {
                                     <div className='font-semibold flex flex-col items-center' ref={teamBox[0]}>
                                         {loaded && <Confetti
                                             recycle={confettis[0][0]}
-                                            numberOfPieces={130}
-                                            friction={0.97}
-                                            gravity={0.15}
+                                            numberOfPieces={250}
+                                            friction={1}
+                                            gravity={0.2}
                                             confettiSource={{
                                                 w: getEl(0).w,
                                                 h: getEl(0).h,
@@ -223,9 +223,9 @@ function App() {
                                         <div className='font-semibold flex flex-col items-center' ref={teamBox[1]}>
                                             {loaded && <Confetti
                                                 recycle={confettis[1][0]}
-                                                numberOfPieces={130}
-                                                friction={0.97}
-                                                gravity={0.15}
+                                                numberOfPieces={250}
+                                                friction={1}
+                                                gravity={0.2}
                                                 confettiSource={{
                                                     w: getEl(1).w,
                                                     h: getEl(1).h,
@@ -249,9 +249,9 @@ function App() {
                                         <div className='font-semibold flex flex-col items-center' ref={teamBox[2]}>
                                             {loaded && <Confetti
                                                 recycle={confettis[2][0]}
-                                                numberOfPieces={130}
-                                                friction={0.97}
-                                                gravity={0.15}
+                                                numberOfPieces={250}
+                                                friction={1}
+                                                gravity={0.2}
                                                 confettiSource={{
                                                     w: getEl(2).w,
                                                     h: getEl(2).h,
@@ -276,9 +276,9 @@ function App() {
                                     <div className='font-semibold flex flex-col items-center' ref={teamBox[3]}>
                                         {loaded && <Confetti
                                             recycle={confettis[3][0]}
-                                            numberOfPieces={130}
-                                            friction={0.97}
-                                            gravity={0.15}
+                                            numberOfPieces={250}
+                                            friction={1}
+                                            gravity={0.2}
                                             confettiSource={{
                                                 w: getEl(3).w,
                                                 h: getEl(3).h,
@@ -301,9 +301,9 @@ function App() {
                                         <div className='font-semibold flex flex-col items-center' ref={teamBox[4]}>
                                             {loaded && <Confetti
                                                 recycle={confettis[4][0]}
-                                                numberOfPieces={130}
-                                                friction={0.97}
-                                                gravity={0.15}
+                                                numberOfPieces={250}
+                                                friction={1}
+                                                gravity={0.2}
                                                 confettiSource={{
                                                     w: getEl(4).w,
                                                     h: getEl(4).h,
@@ -413,8 +413,8 @@ function App() {
                 <Confetti 
                     recycle={1}
                     numberOfPieces={500}
-                    friction={0.97}
-                    gravity={0.15}
+                    friction={1}
+                    gravity={0.2}
                 />
                 <div className='flex flex-col items-center h-full w-full'>
                     <div className='aspect-video w-10/12 h-5/6 absolute bg-white' />
